@@ -10,6 +10,8 @@ export default class Chat extends Component {
     }
   }
 
+  //use prop name for nav header  
+  //set.State to static message so all elemens of the UI can be viewed
   componentDidMount(){
     let { name } = this.props.route.params;
     this.props.navigation.setOptions({ title: name });
