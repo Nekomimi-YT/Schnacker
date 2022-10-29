@@ -25,11 +25,19 @@ export default class Chat extends Component {
             _id: 2,
             name: 'React Native',
             avatar: 'https://placeimg.com/140/140/any',
+            },
           },
-        },
-      ],
-    })
-  }
+        ],
+      })
+    }
+
+    //appends the new message sent to the previousState
+    onSend(messages = []) {
+      this.setState(previousState => ({
+        messages: GiftedChat.append(previousState.messages, messages),
+      }))
+    }
+
 
   render() {
     let { bgColor } = this.props.route.params;
