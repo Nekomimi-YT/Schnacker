@@ -41,9 +41,16 @@ export default class Chat extends Component {
 
   render() {
     let { bgColor } = this.props.route.params;
+    const { messages } = this.state;
     return (
       <View style={[{backgroundColor: bgColor}, styles.container]}>
-        <Text style={{color:'orange'}}>Chat Screen</Text>
+        <GiftedChat
+          messages={ messages }
+          onSend={messages => this.onSend(messages)}
+          user={{
+            _id: 1,
+          }}
+        />
       </View>
     )
   }
