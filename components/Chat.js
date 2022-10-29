@@ -31,12 +31,12 @@ export default class Chat extends Component {
       })
     }
 
-    //appends the new message sent to the previousState
-    onSend(messages = []) {
-      this.setState(previousState => ({
-        messages: GiftedChat.append(previousState.messages, messages),
-      }))
-    }
+  //appends the new message sent to the previousState
+  onSend(messages = []) {
+    this.setState(previousState => ({
+      messages: GiftedChat.append(previousState.messages, messages),
+    }))
+  }
 
 
   render() {
@@ -51,6 +51,9 @@ export default class Chat extends Component {
             _id: 1,
           }}
         />
+        { Platform.OS === 'android' 
+          ? <KeyboardAvoidingView behavior="height" /> 
+          : null }
       </View>
     )
   }
