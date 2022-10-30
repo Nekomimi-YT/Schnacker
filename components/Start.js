@@ -39,6 +39,10 @@ export default class Start extends Component {
                   {/*Create buttons using TouchableOpacity*/}
                   <TouchableOpacity 
                     style={[styles.box, styles.bgDark]}
+                    accessible={true}
+                    accessibilityLabel='Almost black'
+                    accessibilityHint='Choose almost black as the chat screen background color.'
+                    accessibilityRole='button'
                     onPress={() => this.setState({
                       bgColor: '#090C08',
                       }) 
@@ -47,6 +51,10 @@ export default class Start extends Component {
                   </TouchableOpacity>
                   <TouchableOpacity  
                     style={[styles.box, styles.bgBrown]}
+                    accessible={true}
+                    accessibilityLabel='Purple brown'
+                    accessibilityHint='Choose purple brown as the chat screen background color.'
+                    accessibilityRole='button'
                     onPress={() => this.setState({
                       bgColor: '#474056',
                     })
@@ -54,6 +62,10 @@ export default class Start extends Component {
                   </TouchableOpacity>
                   <TouchableOpacity  
                     style={[styles.box, styles.bgBlue]}
+                    accessible={true}
+                    accessibilityLabel='Silver blue'
+                    accessibilityHint='Choose silver blue as the chat screen background color.'
+                    accessibilityRole='button'
                     onPress={() => this.setState({
                       bgColor: '#8A95A5',
                     })
@@ -61,6 +73,10 @@ export default class Start extends Component {
                   </TouchableOpacity>
                   <TouchableOpacity 
                     style={[styles.box, styles.bgGreen]}
+                    accessible={true}
+                    accessibilityLabel='Pale green'
+                    accessibilityHint='Choose pale green as the chat screen background color.'
+                    accessibilityRole='button'
                     onPress={() => this.setState({
                       bgColor: '#B9C6AE',
                     })
