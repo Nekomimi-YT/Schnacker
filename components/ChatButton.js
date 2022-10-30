@@ -9,6 +9,10 @@ export default function ChatButton(props) {
   return (
     <Pressable 
       style={styles.chatButton}
+      accessible={true}
+      accessibilityLabel='Start Chatting'
+      accessibilityHint='Click to begin a chat session.'
+      accessibilityRole='button'
       onPress={onPress}
       >
       <Text style={styles.buttonText}>{title}</Text>
