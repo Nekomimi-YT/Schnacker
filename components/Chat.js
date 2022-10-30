@@ -22,7 +22,7 @@ export default class Chat extends Component {
       messages: [
         {
           _id: 1,
-          text: 'Hello baby developer Lisa',
+          text: 'Are you there?',
           createdAt: new Date(),
           user: {
             _id: 2,
