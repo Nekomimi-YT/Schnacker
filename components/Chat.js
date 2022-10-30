@@ -10,8 +10,11 @@ export default class Chat extends Component {
     }
   }
 
-  //use prop name for nav header  
-  //set.State to static message so all elemens of the UI can be viewed
+  /*
+  - use prop name for nav header  
+  - setState to static message so all elements of the UI can be viewed
+  - use name prop to personlize online system message */
+
   componentDidMount(){
     let { name } = this.props.route.params;
     this.props.navigation.setOptions({ title: name });
@@ -44,22 +47,24 @@ export default class Chat extends Component {
     }))
   }
 
+  // customizing the chat bubbles
   renderBubble(props) {
     return (
       <Bubble
         {...props}
         wrapperStyle={{
           right: {
-            backgroundColor: '#000',
+            backgroundColor: '#000000',
           },
           left: {
-            backgroundColor: 'red'
+            backgroundColor: '#FFFFFF'
           }
         }}
       />
     )
   }
 
+  // rendering the Gifted Chat component and Android keyboard fix
   render() {
     let { bgColor } = this.props.route.params;
     const { messages } = this.state;
