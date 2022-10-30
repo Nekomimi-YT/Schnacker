@@ -29,7 +29,7 @@ export default class Chat extends Component {
           },
           {
             _id: 2,
-            text: 'This is a system message',
+            text: `${name} is online`,
             createdAt: new Date(),
             system: true,
            },
