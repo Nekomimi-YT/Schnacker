@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Platform, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, View, Platform, KeyboardAvoidingView, Text } from 'react-native';
 import { GiftedChat, Bubble } from 'react-native-gifted-chat';
 
 export default class Chat extends Component {
@@ -63,7 +63,7 @@ export default class Chat extends Component {
       />
     )
   }
-
+  
   // rendering the Gifted Chat component and Android keyboard fix
   render() {
     let { bgColor } = this.props.route.params;
@@ -88,6 +88,6 @@ export default class Chat extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
 });

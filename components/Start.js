@@ -15,7 +15,7 @@ export default class Start extends Component {
       bgColor: '',
     }
   }
-
+  
   render() {
     const { name, bgColor } = this.state;
     return (
