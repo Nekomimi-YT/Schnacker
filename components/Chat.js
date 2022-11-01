@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Platform, KeyboardAvoidingView, Text } from 'react-native';
+import { StyleSheet, View, Platform, KeyboardAvoidingView } from 'react-native';
 import { GiftedChat, Bubble } from 'react-native-gifted-chat';
 
 export default class Chat extends Component {
@@ -13,7 +13,7 @@ export default class Chat extends Component {
   /*
   - use prop name for nav header  
   - setState to static message so all elements of the UI can be viewed
-  - use name prop to personlize online system message */
+  - use name prop to personalize online system message */
 
   componentDidMount(){
     let { name } = this.props.route.params;
