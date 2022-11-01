@@ -26,7 +26,10 @@ export default class Start extends Component {
           style={styles.image}>
           <View style={styles.contentWrapper}>
             <Text style={styles.title}>Schnacker</Text>
-            <View style={styles.viewOne}>
+            <View 
+              style={styles.viewOne}
+              accessible={true}
+              accessibilityLabel='Enter your chat username.'>
               <TextInput 
                 value={this.state.name}
                 style={styles.textInput}
