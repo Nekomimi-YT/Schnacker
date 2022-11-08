@@ -10,7 +10,12 @@ export default class Chat extends Component {
     this.state = {
       messages: [],
       uid: 0,
-      loggedInText: 'Logging in...please wait',
+      user: {
+        _id: '',
+        avatar: '',
+        name: '',
+      },
+      loggedInText: '',
     }
 
     const firebaseConfig = {
@@ -44,9 +49,14 @@ export default class Chat extends Component {
         await firebase.auth().signInAnonymously();
       }
     
-      //update user state with currently active user data
+      //update user state with currently active user data (no avatar yet-https://placeimg.com/140/140/any)
       this.setState({
         uid: user.uid,
+        messages: [],
+        user: {
+          _id: user.uid,
+          name: name,
+        },
         loggedInText: `Welcome back ${name}!`,
       });
 
@@ -57,9 +67,11 @@ export default class Chat extends Component {
 
       // listen for message collection changes for current user
       this.unsubscribeChatMessagesUser = this.referenceChatMessagesUser.onSnapshot(this.onCollectionUpdate);
-    });
+      });
+    }
 
-   /* this.setState ({
+    /*  RECORD of data set-up
+    this.setState ({
       messages: [
         {
           _id: 1,
@@ -79,18 +91,27 @@ export default class Chat extends Component {
            },
         ],
       })*/
-    }
 
     componentWillUnmount() {
       this.unsubscribeChatMessagesUser();
       this.authUnsubscribe();
     }
 
+  addMessage = () => {
+    let { name } = this.props.route.params;
+    firebase.firestore().collection('messages').add({
+      text: this.state.messages,
+      createdAt: new Date(),
+      user: this.state.user
+    });
+  }    
+
   //appends the new message sent to the previousState
-  onSend(messages = []) {
+  onSend = (messages = []) => {
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
     }))
+    this.addMessage();
   }
 
   onCollectionUpdate = (querySnapshot) => {
@@ -100,12 +121,16 @@ export default class Chat extends Component {
       // get the QueryDocumentSnapshot's data
       let data = doc.data();
       messages.push({
-        uid: data.uid, //changed _id to uid
+        _id: data.uid, 
         text: data.text,
         createdAt: data.createdAt.toDate(),
         user: data.user,
       });
-    })};
+    });
+    this.setState({
+      messages,
+    });
+  };
 
   // customizing the chat bubbles
   renderBubble(props) {
@@ -126,7 +151,7 @@ export default class Chat extends Component {
   
   // rendering the Gifted Chat component and Android keyboard fix
   render() {
-    let { bgColor } = this.props.route.params;
+    let { bgColor, name } = this.props.route.params;
     const { messages } = this.state;
     return (
       <View style={[{backgroundColor: bgColor}, styles.container]}>
@@ -135,8 +160,9 @@ export default class Chat extends Component {
           messages={ messages }
           onSend={messages => this.onSend(messages)}
           user={{
-            _id: 1,
-          }}
+            _id: this.state.user._id,
+            name: name,
+        }}
         />
         { Platform.OS === 'android' 
           ? <KeyboardAvoidingView behavior="height" /> 
