@@ -10,6 +10,22 @@ export default class Chat extends Component {
     this.state = {
       messages: [],
     }
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAtxv7-Zb2QEFC8m8X9GXmTUStVKeLEdwc",
+      authDomain: "test1-firestore-9c2af.firebaseapp.com",
+      projectId: "test1-firestore-9c2af",
+      storageBucket: "test1-firestore-9c2af.appspot.com",
+      messagingSenderId: "766452589307",
+      appId: "1:766452589307:web:a8165d68fb7697ff09865e"
+    };
+
+    // Initialize Firebase
+    if (!firebase.apps.length){
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    this.referenceChatMessages = firebase.firestore().collection('messages');
   }
 
   /*
