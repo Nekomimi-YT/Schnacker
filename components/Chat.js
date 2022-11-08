@@ -65,6 +65,20 @@ export default class Chat extends Component {
     }))
   }
 
+  onCollectionUpdate = (querySnapshot) => {
+    const messages = [];
+    // go through each document
+    querySnapshot.forEach((doc) => {
+      // get the QueryDocumentSnapshot's data
+      let data = doc.data();
+      messages.push({
+        _id: data._id,
+        text: data.text,
+        createdAt: data.createdAt.toDate(),
+        user: data.user,
+      });
+    })};
+
   // customizing the chat bubbles
   renderBubble(props) {
     return (
