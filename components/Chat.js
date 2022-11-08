@@ -9,6 +9,8 @@ export default class Chat extends Component {
     super();
     this.state = {
       messages: [],
+      uid: 0,
+      loggedInText: 'Logging in...please wait',
     }
 
     const firebaseConfig = {
@@ -28,7 +30,7 @@ export default class Chat extends Component {
     this.referenceChatMessages = firebase.firestore().collection('messages');
   }
 
-  /*
+  /* FIX THESE COMMENTS!
   - use prop name for nav header  
   - setState to static message so all elements of the UI can be viewed
   - use name prop to personalize online system message */
@@ -36,7 +38,26 @@ export default class Chat extends Component {
   componentDidMount(){
     let { name } = this.props.route.params;
     this.props.navigation.setOptions({ title: name });
-    this.setState ({
+
+    this.authUnsubscribe = firebase.auth().onAuthStateChanged(async (user) => {
+      if (!user) {
+        await firebase.auth().signInAnonymously();
+      }
+    
+      //update user state with currently active user data
+      this.setState({
+        uid: user.uid,
+        loggedInText: `Welcome back ${name}!`,
+      });
+      
+      // create a reference to the active user's documents (messages)
+      this.referenceChatMessagesUser = firebase.firestore().collection('messages').where('uid', '==', this.state.uid);
+
+      // listen for message collection changes for current user
+      this.unsubscribeChatMessagesUser = this.referenceChatMessagesUser.onSnapshot(this.onCollectionUpdate);
+    });
+
+   /* this.setState ({
       messages: [
         {
           _id: 1,
@@ -55,7 +76,7 @@ export default class Chat extends Component {
             system: true,
            },
         ],
-      })
+      })*/
     }
 
   //appends the new message sent to the previousState
