@@ -7,6 +7,8 @@ require('firebase/firestore');
 export default class Chat extends Component {
   constructor() {
     super();
+
+    //State includes messages, user id and full user details
     this.state = {
       messages: [],
       uid: 0,
@@ -18,6 +20,7 @@ export default class Chat extends Component {
       loggedInText: '',
     }
 
+    // Initialize Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyAtxv7-Zb2QEFC8m8X9GXmTUStVKeLEdwc",
       authDomain: "test1-firestore-9c2af.firebaseapp.com",
@@ -27,7 +30,7 @@ export default class Chat extends Component {
       appId: "1:766452589307:web:a8165d68fb7697ff09865e"
     };
 
-    // Initialize Firebase
+    
     if (!firebase.apps.length){
       firebase.initializeApp(firebaseConfig);
     }
@@ -35,9 +38,9 @@ export default class Chat extends Component {
     this.referenceChatMessages = firebase.firestore().collection('messages');
   }
 
-  /* FIX THESE COMMENTS!
+  /* componentDidMount:
   - use prop name for nav header  
-  - setState to static message so all elements of the UI can be viewed
+  - Authorize user anonymously using firestore
   - use name prop to personalize online system message */
 
   componentDidMount(){
@@ -92,13 +95,12 @@ export default class Chat extends Component {
         ],
       })*/
 
-    componentWillUnmount() {
-      this.unsubscribeChatMessagesUser();
-      this.authUnsubscribe();
-    }
+  componentWillUnmount() {
+    this.unsubscribeChatMessagesUser();
+    this.authUnsubscribe();
+  }
 
   addMessage = () => {
-    let { name } = this.props.route.params;
     firebase.firestore().collection('messages').add({
       text: this.state.messages,
       createdAt: new Date(),
@@ -110,7 +112,8 @@ export default class Chat extends Component {
   onSend = (messages = []) => {
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
-    }))
+      })
+    );
     this.addMessage();
   }
 
