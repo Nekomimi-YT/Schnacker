@@ -98,7 +98,7 @@ export default class Chat extends Component {
       // get the QueryDocumentSnapshot's data
       let data = doc.data();
       messages.push({
-        _id: data._id,
+        uid: data.uid, //changed _id to uid
         text: data.text,
         createdAt: data.createdAt.toDate(),
         user: data.user,
