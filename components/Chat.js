@@ -50,6 +50,8 @@ export default class Chat extends Component {
         loggedInText: `Welcome back ${name}!`,
       });
 
+      console.log(this.state.loggedInText);
+
       // create a reference to the active user's documents (messages)
       this.referenceChatMessagesUser = firebase.firestore().collection('messages').where('uid', '==', this.state.uid);
 
