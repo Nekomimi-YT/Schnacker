@@ -49,7 +49,7 @@ export default class Chat extends Component {
         uid: user.uid,
         loggedInText: `Welcome back ${name}!`,
       });
-      
+
       // create a reference to the active user's documents (messages)
       this.referenceChatMessagesUser = firebase.firestore().collection('messages').where('uid', '==', this.state.uid);
 
@@ -77,6 +77,11 @@ export default class Chat extends Component {
            },
         ],
       })*/
+    }
+
+    componentWillUnmount() {
+      this.unsubscribeChatMessagesUser();
+      this.authUnsubscribe();
     }
 
   //appends the new message sent to the previousState
