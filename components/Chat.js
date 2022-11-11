@@ -71,6 +71,14 @@ export default class Chat extends Component {
     let { name } = this.props.route.params;
     this.props.navigation.setOptions({ title: name });
 
+    NetInfo.fetch().then(connection => {
+      if (connection.isConnected) {
+        console.log('online');
+      } else {
+        console.log('offline');
+      }
+    });
+
     // calls function to get messages from AsyncStorage    
     this.getMessages();
 
