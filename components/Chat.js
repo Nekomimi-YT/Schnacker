@@ -71,7 +71,7 @@ export default class Chat extends Component {
       //update user state with currently active user data (no avatar yet-https://placeimg.com/140/140/any)
       this.setState({
         uid: user.uid,
-        messages: [],
+        //messages: [], commenting this out for now - trying to get the AsyncStorage to show up
         user: {
           _id: user.uid,
           name: name,
