@@ -124,14 +124,22 @@ export default class Chat extends Component {
     });
   }    
 
+  async saveMessages() {
+    try {
+      await AsyncStorage.setItem('messages', JSON.stringify(this.state.messages));
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+  
   //appends the new message sent to the previousState
   onSend = (messages = []) => {
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
-      })
-    );
-    //this.addMessage();
-    this.saveMessages();
+    }), () => {
+      //this.addMessage();
+      this.saveMessages();
+    });
   }
 
   onCollectionUpdate = (querySnapshot) => {
