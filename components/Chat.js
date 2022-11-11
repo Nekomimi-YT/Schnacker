@@ -39,6 +39,16 @@ export default class Chat extends Component {
     this.referenceChatMessages = firebase.firestore().collection('messages');
   }
 
+  // saves message to AsyncStorage
+  async saveMessages() {
+    try {
+      await AsyncStorage.setItem('messages', JSON.stringify(this.state.messages));
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  // retrieves and parses messages from AsyncStorage
   async getMessages() {
     let messages = '';
     try {
@@ -60,7 +70,7 @@ export default class Chat extends Component {
     let { name } = this.props.route.params;
     this.props.navigation.setOptions({ title: name });
 
-    // get messages from AsyncStorage    
+    // calls function to get messages from AsyncStorage    
     this.getMessages();
 
     this.authUnsubscribe = firebase.auth().onAuthStateChanged(async (user) => {
@@ -71,7 +81,7 @@ export default class Chat extends Component {
       //update user state with currently active user data (no avatar yet-https://placeimg.com/140/140/any)
       this.setState({
         uid: user.uid,
-        //messages: [], commenting this out for now - trying to get the AsyncStorage to show up
+        messages: [], //commenting this out for now - trying to get the AsyncStorage to show up
         user: {
           _id: user.uid,
           name: name,
@@ -124,25 +134,16 @@ export default class Chat extends Component {
       createdAt: new Date(),
       user: this.state.user
     });
-  }    
-
-  //saves message to AsyncStorage
-  async saveMessages() {
-    try {
-      await AsyncStorage.setItem('messages', JSON.stringify(this.state.messages));
-    } catch (error) {
-      console.log(error.message);
-    }
-  }
+  }   
   
   // appends the new message to the previousState and calls both database saving 
   // and AsyncStorage saving functions
-  onSend = (messages = []) => {
+  onSend(messages = []) {
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
     }), () => {
-      this.addMessage();
       this.saveMessages();
+      this.addMessage();
     });
   }
 
