@@ -130,7 +130,8 @@ export default class Chat extends Component {
       messages: GiftedChat.append(previousState.messages, messages),
       })
     );
-    this.addMessage();
+    //this.addMessage();
+    this.saveMessages();
   }
 
   onCollectionUpdate = (querySnapshot) => {
