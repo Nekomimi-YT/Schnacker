@@ -190,6 +190,19 @@ export default class Chat extends Component {
       />
     )
   }
+
+  renderInputToolbar(props) {
+    if (this.state.isConnected == false) {
+    } else {
+      return(
+        <InputToolbar
+        {...props}
+        />
+      );
+    }
+  }
+
+
   
   // rendering the Gifted Chat component and Android keyboard fix
   render() {
