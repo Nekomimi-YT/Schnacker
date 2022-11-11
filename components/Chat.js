@@ -106,7 +106,7 @@ export default class Chat extends Component {
           //update user state with user data
           this.setState({
             uid: user.uid,
-            messages: [], //commenting this out for now - trying to get the AsyncStorage to show up
+            messages: [], 
             user: {
               _id: user.uid,
               name: name,
