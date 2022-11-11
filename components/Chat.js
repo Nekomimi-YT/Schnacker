@@ -39,6 +39,18 @@ export default class Chat extends Component {
     this.referenceChatMessages = firebase.firestore().collection('messages');
   }
 
+  async getMessages() {
+    let messages = '';
+    try {
+      messages = await AsyncStorage.getItem('messages') || [];
+      this.setState({
+        messages: JSON.parse(messages)
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  
   /* componentDidMount:
   - use prop name for nav header  
   - Authorize user anonymously using firestore
