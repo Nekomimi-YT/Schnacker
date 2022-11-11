@@ -62,6 +62,18 @@ export default class Chat extends Component {
     }
   };
 
+  // delete message function to use when testing 
+  async deleteMessages() {
+    try {
+      await AsyncStorage.removeItem('messages');
+      this.setState({
+        messages: []
+      })
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   /* componentDidMount functionality:
     - Uses prop name for navigation header on chat view
     - Retrieves previous messages from AsyncStorage
