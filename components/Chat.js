@@ -50,11 +50,11 @@ export default class Chat extends Component {
       console.log(error.message);
     }
   };
-  
-  /* componentDidMount:
-  - use prop name for nav header  
-  - Authorize user anonymously using firestore
-  - use name prop to personalize online system message */
+
+  /* componentDidMount functinality:
+    - Uses prop name for navigation header on chat view
+    - Retrieves previous messages from AsyncStorage
+    - Authorizes user anonymously using firestore */
 
   componentDidMount(){
     let { name } = this.props.route.params;
