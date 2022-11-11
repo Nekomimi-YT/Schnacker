@@ -116,6 +116,7 @@ export default class Chat extends Component {
     this.authUnsubscribe();
   }
 
+  // adds message and data to firebase 
   addMessage = () => {
     firebase.firestore().collection('messages').add({
       text: this.state.messages,
@@ -124,6 +125,7 @@ export default class Chat extends Component {
     });
   }    
 
+  //saves message to AsyncStorage
   async saveMessages() {
     try {
       await AsyncStorage.setItem('messages', JSON.stringify(this.state.messages));
@@ -132,7 +134,8 @@ export default class Chat extends Component {
     }
   }
   
-  //appends the new message sent to the previousState
+  // appends the new message to the previousState and calls both database saving 
+  // and AsyncStorage saving functions
   onSend = (messages = []) => {
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
