@@ -20,6 +20,7 @@ export default class Chat extends Component {
         name: '',
       },
       loggedInText: '',
+      isConnected: false
     }
 
     // Initialize Firebase
@@ -84,42 +85,47 @@ export default class Chat extends Component {
     this.props.navigation.setOptions({ title: name });
 
     NetInfo.fetch().then(connection => {
-      if (connection.isConnected) {
-        console.log('online');
-      } else {
+      if (!connection.isConnected) {
         console.log('offline');
+        this.setState({
+          isConnected: false
+        });
+        // no connection: get messages from AsyncStorage    
+        this.getMessages();
+      } else {
+        console.log('online');
+        this.setState({
+          isConnected: true
+        });
+         // connected: get messages from AsyncStorage 
+        this.authUnsubscribe = firebase.auth().onAuthStateChanged(async (user) => {
+          if (!user) {
+            await firebase.auth().signInAnonymously();
+          }
+        
+          //update user state with user data
+          this.setState({
+            uid: user.uid,
+            messages: [], //commenting this out for now - trying to get the AsyncStorage to show up
+            user: {
+              _id: user.uid,
+              name: name,
+            },
+            loggedInText: `Welcome back ${name}!`,
+          });
+    
+          //console.log testing that anon auth was successful
+          console.log(this.state.loggedInText);
+    
+          // create a reference to the active user's documents (messages)
+          this.referenceChatMessagesUser = firebase.firestore().collection('messages').where('uid', '==', this.state.uid);
+    
+          // listen for message collection changes for current user
+          this.unsubscribeChatMessagesUser = this.referenceChatMessagesUser.onSnapshot(this.onCollectionUpdate);
+        });
       }
     });
-
-    // calls function to get messages from AsyncStorage    
-    this.getMessages();
-
-    this.authUnsubscribe = firebase.auth().onAuthStateChanged(async (user) => {
-      if (!user) {
-        await firebase.auth().signInAnonymously();
-      }
-    
-      //update user state with currently active user data (no avatar yet-https://placeimg.com/140/140/any)
-      this.setState({
-        uid: user.uid,
-        messages: [], //commenting this out for now - trying to get the AsyncStorage to show up
-        user: {
-          _id: user.uid,
-          name: name,
-        },
-        loggedInText: `Welcome back ${name}!`,
-      });
-
-      //console.log testing that anon auth was successful
-      console.log(this.state.loggedInText);
-
-      // create a reference to the active user's documents (messages)
-      this.referenceChatMessagesUser = firebase.firestore().collection('messages').where('uid', '==', this.state.uid);
-
-      // listen for message collection changes for current user
-      this.unsubscribeChatMessagesUser = this.referenceChatMessagesUser.onSnapshot(this.onCollectionUpdate);
-      });
-    }
+  }
 
     /*  RECORD of data set-up
     this.setState ({
