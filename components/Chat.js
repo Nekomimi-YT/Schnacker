@@ -51,7 +51,7 @@ export default class Chat extends Component {
     }
   };
 
-  /* componentDidMount functinality:
+  /* componentDidMount functionality:
     - Uses prop name for navigation header on chat view
     - Retrieves previous messages from AsyncStorage
     - Authorizes user anonymously using firestore */
