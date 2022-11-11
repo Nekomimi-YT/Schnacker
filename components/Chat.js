@@ -163,8 +163,8 @@ export default class Chat extends Component {
     });
   }   
   
-  // appends the new message to the previousState and calls both database saving 
-  // and AsyncStorage saving functions
+  // appends the new message to the previousState and calls both database 
+  // and AsyncStorage message-saving functions
   onSend(messages = []) {
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
@@ -209,6 +209,7 @@ export default class Chat extends Component {
     )
   }
 
+  // render text input only if user is connected
   renderInputToolbar(props) {
     if (this.state.isConnected == false) {
     } else {
@@ -220,8 +221,6 @@ export default class Chat extends Component {
     }
   }
 
-
-  
   // rendering the Gifted Chat component and Android keyboard fix
   render() {
     let { bgColor, name } = this.props.route.params;
