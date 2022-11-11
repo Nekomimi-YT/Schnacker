@@ -79,6 +79,7 @@ export default class Chat extends Component {
         loggedInText: `Welcome back ${name}!`,
       });
 
+      //console.log testing that anon auth was successful
       console.log(this.state.loggedInText);
 
       // create a reference to the active user's documents (messages)
@@ -140,7 +141,7 @@ export default class Chat extends Component {
     this.setState(previousState => ({
       messages: GiftedChat.append(previousState.messages, messages),
     }), () => {
-      //this.addMessage();
+      this.addMessage();
       this.saveMessages();
     });
   }
