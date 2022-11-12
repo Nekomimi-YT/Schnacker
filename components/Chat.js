@@ -155,7 +155,7 @@ export default class Chat extends Component {
   }
 
   // adds message and data to firebase 
-  addMessage = () => {
+  addMessages = () => {
     firebase.firestore().collection('messages').add({
       text: this.state.messages,
       createdAt: new Date(),
@@ -170,7 +170,7 @@ export default class Chat extends Component {
       messages: GiftedChat.append(previousState.messages, messages),
     }), () => {
       this.saveMessages();
-      this.addMessage();
+      this.addMessages();
     });
   }
 
