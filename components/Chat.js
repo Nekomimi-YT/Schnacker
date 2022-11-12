@@ -188,7 +188,7 @@ export default class Chat extends Component {
       });
     });
     this.setState({
-      messages,
+      messages: messages,
     });
   };
 
