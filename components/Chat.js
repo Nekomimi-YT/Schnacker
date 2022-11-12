@@ -128,8 +128,10 @@ export default class Chat extends Component {
   }
 
   componentWillUnmount() {
-    this.unsubscribeChatMessagesUser();
-    this.authUnsubscribe();
+    if (this.isConnected) {
+      this.unsubscribeChatMessagesUser();
+      this.authUnsubscribe();
+    };
   }
 
   // adds message and data to firebase 
