@@ -229,6 +229,7 @@ export default class Chat extends Component {
       <View style={[{backgroundColor: bgColor}, styles.container]}>
         <GiftedChat
           renderBubble={this.renderBubble.bind(this)}
+          renderInputToolbar={this.renderInputToolbar.bind(this)}
           messages={ messages }
           onSend={messages => this.onSend(messages)}
           user={{
