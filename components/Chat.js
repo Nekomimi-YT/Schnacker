@@ -137,9 +137,9 @@ export default class Chat extends Component {
   // adds message and data to firebase 
   addMessages = () => {
     firebase.firestore().collection('messages').add({
-      text: this.state.messages,
+      user: this.state.user,
       createdAt: new Date(),
-      user: this.state.user
+      text: this.state.messages,      
     });
   }   
   
@@ -162,9 +162,9 @@ export default class Chat extends Component {
       let data = doc.data();
       messages.push({
         _id: data.uid, 
-        text: data.text,
         createdAt: data.createdAt.toDate(),
         user: data.user,
+        text: data.text,
       });
     });
     this.setState({
