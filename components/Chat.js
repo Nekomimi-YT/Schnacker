@@ -25,6 +25,7 @@ export default class Chat extends Component {
       loggedInText: '',
       isConnected: false,
       image: null,
+      location: null
     }
 
     // Initialize Firebase
