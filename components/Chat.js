@@ -4,6 +4,8 @@ import { GiftedChat, Bubble, InputToolbar } from 'react-native-gifted-chat';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import NetInfo from '@react-native-community/netinfo';
 import CustomActions from './CustomActions';
+import * as Location from 'expo-location';
+import MapView from 'react-native-maps';
 const firebase = require('firebase');
 require('firebase/firestore');
 
@@ -208,6 +210,28 @@ export default class Chat extends Component {
     return <CustomActions {...props} />;
   };
 
+  // render a map in the chat bubble
+  renderCustomView (props) {
+    const { currentMessage } = props;
+    if (currentMessage.location) {
+      return (
+          <MapView
+            style={{width: 150,
+              height: 100,
+              borderRadius: 13,
+              margin: 3}}
+            region={{
+              latitude: currentMessage.location.latitude,
+              longitude: currentMessage.location.longitude,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
+          />
+      );
+    }
+    return null;
+  }
+
   // rendering the Gifted Chat component and Android keyboard fix
   render() {
     let { bgColor, name } = this.props.route.params;
@@ -217,7 +241,8 @@ export default class Chat extends Component {
         <GiftedChat
           renderBubble={this.renderBubble.bind(this)}
           renderInputToolbar={this.renderInputToolbar.bind(this)}
-          renderActions={this.renderCustomActions}
+          renderActions={this.renderCustomActions.bind(this)}
+          renderCustomView={this.renderCustomView.bind(this)}
           messages={ messages }
           onSend={messages => this.onSend(messages)}
           user={{
