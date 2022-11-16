@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component} from 'react';
 import { StyleSheet, View, TouchableOpacity, Text} from 'react-native'; //need ActionSheet?
 
