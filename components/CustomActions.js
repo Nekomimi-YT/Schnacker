@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
-import React, { Component} from 'react';
-import { StyleSheet, View, TouchableOpacity, Text} from 'react-native'; //need ActionSheet?
+import React, { Component } from 'react';
+import { StyleSheet, View, TouchableOpacity, Text} from 'react-native'; 
+import { connectActionSheet } from '@expo/react-native-action-sheet';
 
 export default class CustomActions extends Component {
 
   onActionPress = () => {
     const options = ['Choose From Library', 'Take Picture', 'Send Location', 'Cancel'];
     const cancelButtonIndex = options.length - 1;
-    this.context.actionSheet().showActionSheetWithOptions(
+    this.props.showActionSheetWithOptions(
       {
         options,
         cancelButtonIndex,
@@ -64,3 +65,5 @@ const styles = StyleSheet.create({
  CustomActions.contextTypes = {
   actionSheet: PropTypes.func,
  };
+
+ CustomActions = connectActionSheet(CustomActions);
