@@ -201,6 +201,11 @@ export default class Chat extends Component {
     }
   }
 
+  // render the button to access image actions and geolocation
+  renderCustomActions = (props) => {
+    return <CustomActions {...props} />;
+  };
+
   // rendering the Gifted Chat component and Android keyboard fix
   render() {
     let { bgColor, name } = this.props.route.params;
