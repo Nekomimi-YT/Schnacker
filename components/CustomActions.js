@@ -89,19 +89,19 @@ export default class CustomActions extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    width: 26,
-    height: 26,
+    width: 28,
+    height: 28,
     marginLeft: 10,
     marginBottom: 10,
   },
   wrapper: {
-    borderRadius: 13,
-    borderColor: '#b2b2b2',
+    borderRadius: 20,
+    borderColor: '#B9C6AE',
     borderWidth: 2,
     flex: 1,
   },
   iconText: {
-    color: '#b2b2b2',
+    color: '#B9C6AE',
     fontWeight: 'bold',
     fontSize: 16,
     backgroundColor: 'transparent',
