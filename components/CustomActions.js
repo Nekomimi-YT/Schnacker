@@ -149,12 +149,12 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     borderRadius: 20,
-    borderColor: '#B9C6AE',
+    borderColor: '#8A95A5',
     borderWidth: 2,
     flex: 1,
   },
   iconText: {
-    color: '#B9C6AE',
+    color: '#090C08',
     fontWeight: 'bold',
     fontSize: 16,
     backgroundColor: 'transparent',
