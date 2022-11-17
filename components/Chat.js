@@ -46,7 +46,7 @@ export default class Chat extends Component {
   }
 
   // saves message to AsyncStorage
-  async saveMessages() {
+  saveMessages = async () => {
     try {
       await AsyncStorage.setItem('messages', JSON.stringify(this.state.messages));
     } catch (error) {
