@@ -155,6 +155,7 @@ export default class Chat extends Component {
     }), () => {
       this.saveMessages();
       this.addMessages();
+      //this.deleteMessages();
     });
   }
 
