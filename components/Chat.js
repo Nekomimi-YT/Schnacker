@@ -142,14 +142,16 @@ export default class Chat extends Component {
 
   // adds message and data to firebase 
   addMessages = () => {
+    const message = this.state.messages[0]
     firebase.firestore().collection('messages').add({
-      user: this.state.user,
-      createdAt: new Date(),
-      text: this.state.messages, 
-      image: this.state.image || null,
-      location: this.state.location || null,     
+      _id: message._id,
+      text: message.text || "",
+      createdAt: message.createdAt,
+      user: message.user,
+      image: message.image || null,
+      location: message.location || null
     });
-  }   
+  };
   
   // appends the new message to the previousState and calls both database 
   // and AsyncStorage message-saving functions
