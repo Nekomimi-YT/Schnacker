@@ -2,6 +2,9 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { StyleSheet, View, TouchableOpacity, Text} from 'react-native'; 
 import { connectActionSheet } from '@expo/react-native-action-sheet';
+import * as Permissions from 'expo-permissions';
+import * as ImagePicker from 'expo-image-picker';
+import * as Location from 'expo-location';
 
 export default class CustomActions extends Component {
 
