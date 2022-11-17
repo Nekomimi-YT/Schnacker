@@ -40,7 +40,7 @@ export default class CustomActions extends Component {
   
         if (!result.cancelled) {
           const imageUrl = await this.uploadImageFetch(result.uri);
-          this.props.onSend({ image: imageURl });
+          this.props.onSend({ image: imageUrl });
         }
       }
     } catch (error) {
