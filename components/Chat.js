@@ -143,7 +143,9 @@ export default class Chat extends Component {
     firebase.firestore().collection('messages').add({
       user: this.state.user,
       createdAt: new Date(),
-      text: this.state.messages,      
+      text: this.state.messages, 
+      image: this.state.image || null,
+      location: this.state.location || null,     
     });
   }   
   
