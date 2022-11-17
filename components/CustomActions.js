@@ -8,6 +8,22 @@ import * as Location from 'expo-location';
 
 export default class CustomActions extends Component {
 
+  pickImage = async () => {
+    const { status } = await Permissions.askAsync(Permissions.MEDIA_LIBRARY);
+ 
+    if(status === 'granted') {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: 'Images',
+      }).catch(error => console.log(error));
+ 
+      if (!result.cancelled) {
+        this.setState({
+          image: result
+        });  
+      }
+    }
+  }
+
   onActionPress = () => {
     const options = ['Choose From Library', 'Take Picture', 'Send Location', 'Cancel'];
     const cancelButtonIndex = options.length - 1;
