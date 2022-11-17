@@ -174,6 +174,8 @@ export default class Chat extends Component {
         createdAt: data.createdAt.toDate(),
         user: data.user,
         text: data.text,
+        image: data.image || null,
+        location: data.location || null
       });
     });
     this.setState({
