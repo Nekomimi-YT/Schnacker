@@ -8,6 +8,7 @@ import * as Location from 'expo-location';
 
 export default class CustomActions extends Component {
 
+  // access user images on device
   pickImage = async () => {
     const { status } = await Permissions.askAsync(Permissions.MEDIA_LIBRARY);
  
@@ -24,6 +25,7 @@ export default class CustomActions extends Component {
     }
   }
 
+  // access camera, take photo, access that photo
   takePhoto = async () => {
     const { status } = await Permissions.askAsync(Permissions.MEDIA_LIBRARY, Permissions.CAMERA);
  
@@ -39,6 +41,7 @@ export default class CustomActions extends Component {
     }
   }
 
+  // access user device location
   getLocation = async () => {
     const { status } = await Permissions.askAsync(Permissions.LOCATION_FOREGROUND);
     if(status === 'granted') {
