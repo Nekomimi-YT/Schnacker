@@ -32,16 +32,21 @@ export default class CustomActions extends Component {
   // access camera, take photo, access that photo
   takePhoto = async () => {
     const { status } = await Permissions.askAsync(Permissions.MEDIA_LIBRARY, Permissions.CAMERA);
- 
-    if(status === 'granted') {
-      let result = await ImagePicker.launchCameraAsync()
-        .catch(error => console.log(error));
- 
-      if (!result.cancelled) {
-        this.props.onSend({ image: result });
+    try {
+      if(status === 'granted') {
+        let result = await ImagePicker.launchCameraAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.Images
+        }).catch(error => console.log(error));
+  
+        if (!result.cancelled) {
+          const imageUrl = await this.uploadImageFetch(result.uri);
+          this.props.onSend({ image: imageURl });
+        }
       }
+    } catch (error) {
+      console.log(error.message);
     }
-  }
+  };
 
   // access user device location
   getLocation = async () => {
