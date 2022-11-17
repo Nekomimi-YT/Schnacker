@@ -39,6 +39,20 @@ export default class CustomActions extends Component {
     }
   }
 
+  getLocation = async () => {
+    const { status } = await Permissions.askAsync(Permissions.LOCATION_FOREGROUND);
+    if(status === 'granted') {
+      let result = await Location.getCurrentPositionAsync({})
+        .catch(error => console.log(error));
+ 
+      if (result) {
+        this.setState({
+          location: result
+        });
+      }
+    }
+  }
+
   onActionPress = () => {
     const options = ['Choose From Library', 'Take Picture', 'Send Location', 'Cancel'];
     const cancelButtonIndex = options.length - 1;
