@@ -145,7 +145,7 @@ export default class Chat extends Component {
     const message = this.state.messages[0]
     firebase.firestore().collection('messages').add({
       _id: message._id,
-      text: message.text || "",
+      text: message.text || '',
       createdAt: message.createdAt,
       user: message.user,
       image: message.image || null,
