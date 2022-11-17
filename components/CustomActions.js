@@ -13,16 +13,19 @@ export default class CustomActions extends Component {
   // access user images on device
   pickImage = async () => {
     const { status } = await Permissions.askAsync(Permissions.MEDIA_LIBRARY);
- 
-    if(status === 'granted') {
-      let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images
-      }).catch(error => console.log(error));
- 
-      if (!result.cancelled) {
-        this.props.onSend({ image: result });
-       
+    try {
+      if(status === 'granted') {
+        let result = await ImagePicker.launchImageLibraryAsync({
+          mediaTypes: ImagePicker.MediaTypeOptions.Images
+        }).catch(error => console.log(error));
+  
+        if (!result.cancelled) {
+          const imageUrl = await this.uploadImageFetch(result.uri);
+          this.props.onSend({ image: imageUrl });
+        }
       }
+    } catch (error) {
+      console.log(error.message);
     }
   }
 
