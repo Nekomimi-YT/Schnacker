@@ -18,9 +18,8 @@ export default class CustomActions extends Component {
       }).catch(error => console.log(error));
  
       if (!result.cancelled) {
-        this.setState({
-          image: result
-        });  
+        this.props.onSend({ image: result });
+       
       }
     }
   }
@@ -34,9 +33,7 @@ export default class CustomActions extends Component {
         .catch(error => console.log(error));
  
       if (!result.cancelled) {
-        this.setState({
-          image: result
-        });  
+        this.props.onSend({ image: result });
       }
     }
   }
@@ -49,9 +46,7 @@ export default class CustomActions extends Component {
         .catch(error => console.log(error));
  
       if (result) {
-        this.setState({
-          location: result
-        });
+        this.props.onSend({ location: result });
       }
     }
   }
