@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   contentWrapper: {
     flex: 1,
     justifyContent: 'space-around',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   title: {
     fontSize: 45,
@@ -121,7 +121,8 @@ const styles = StyleSheet.create({
     height: '44%',
     backgroundColor: 'white',
     justifyContent: 'space-evenly',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderRadius: 8
   },
   textInput: {
     height: 50,
