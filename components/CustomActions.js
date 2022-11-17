@@ -24,6 +24,21 @@ export default class CustomActions extends Component {
     }
   }
 
+  takePhoto = async () => {
+    const { status } = await Permissions.askAsync(Permissions.MEDIA_LIBRARY, Permissions.CAMERA);
+ 
+    if(status === 'granted') {
+      let result = await ImagePicker.launchCameraAsync()
+        .catch(error => console.log(error));
+ 
+      if (!result.cancelled) {
+        this.setState({
+          image: result
+        });  
+      }
+    }
+  }
+
   onActionPress = () => {
     const options = ['Choose From Library', 'Take Picture', 'Send Location', 'Cancel'];
     const cancelButtonIndex = options.length - 1;
