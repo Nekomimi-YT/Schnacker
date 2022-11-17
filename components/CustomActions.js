@@ -50,16 +50,26 @@ export default class CustomActions extends Component {
 
   // access user device location
   getLocation = async () => {
-    const { status } = await Permissions.askAsync(Permissions.LOCATION_FOREGROUND);
-    if(status === 'granted') {
-      let result = await Location.getCurrentPositionAsync({})
-        .catch(error => console.log(error));
- 
-      if (result) {
-        this.props.onSend({ location: result });
+    try {
+      const { status } = await Permissions.askAsync(Permissions.LOCATION_FOREGROUND);
+      if(status === 'granted') {
+        let result = await Location.getCurrentPositionAsync({})
+          .catch(error => console.log(error));
+        const longitude = JSON.stringify(result.coords.longitude);
+        const latitude = JSON.stringify(result.coords.latitude);  
+        if (result) {
+          this.props.onSend({ 
+            location: {
+              longitude: result.coords.longitude,
+              latitude: result.coords.latitude
+            }
+          });
+        }
       }
+    } catch (error) {
+      console.log(error.message);
     }
-  }
+  };
 
   uploadImageFetch = async (uri) => {
     const blob = await new Promise((resolve, reject) => {
