@@ -125,7 +125,9 @@ export default class Chat extends Component {
           this.referenceChatMessagesUser = firebase.firestore().collection('messages').where('uid', '==', this.state.uid);
     
           // listen for message collection changes for current user
-          this.unsubscribeChatMessagesUser = this.referenceChatMessagesUser.onSnapshot(this.onCollectionUpdate);
+          this.unsubscribeChatMessagesUser = this.referenceChatMessagesUser
+            .orderBy('createdAt', desc)
+            .onSnapshot(this.onCollectionUpdate);
         });
       }
     });
