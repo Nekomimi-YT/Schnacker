@@ -110,13 +110,13 @@ export default class CustomActions extends Component {
         switch (buttonIndex) {
           case 0:
             console.log('user wants to pick an image');
-            return this.pickImage;
+            return this.pickImage();
           case 1:
             console.log('user wants to take a photo');
-            return this.takePhoto;
+            return this.takePhoto();
           case 2:
             console.log('user wants to get their location');
-            return this.getLocation;
+            return this.getLocation();
           default:
         }
       },
