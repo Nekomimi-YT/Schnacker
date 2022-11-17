@@ -125,11 +125,17 @@ export default class CustomActions extends Component {
 
   render () {
     return (
-      <TouchableOpacity style={[styles.container]} onPress={this.onActionPress}>
-       <View style={[styles.wrapper, this.props.wrapperStyle]}>
-         <Text style={[styles.iconText, this.props.iconTextStyle]}>+</Text>
-       </View>
-     </TouchableOpacity>
+      <TouchableOpacity 
+        style={[styles.container]} 
+        accessible={true}
+        accessibilityLabel='Send images or location'
+        accessibilityHint='Open a menu to send a photo from your camera, media library or share your location.'
+        accessibilityRole='button'
+        onPress={this.onActionPress}>
+        <View style={[styles.wrapper, this.props.wrapperStyle]}>
+          <Text style={[styles.iconText, this.props.iconTextStyle]}>+</Text>
+        </View>
+      </TouchableOpacity>
     )
   }
 }
