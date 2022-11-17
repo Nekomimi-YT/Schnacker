@@ -68,7 +68,7 @@ export default class Chat extends Component {
   };
 
   // delete message function to use when testing 
-  async deleteMessages() {
+  deleteMessages = async () => {
     try {
       await AsyncStorage.removeItem('messages');
       this.setState({
