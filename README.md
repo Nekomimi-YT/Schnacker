@@ -39,7 +39,7 @@ $ git clone https://github.com/Nekomimi-YT/Schnacker.git
 $ gh repo clone Nekomimi-YT/Schnacker
 ```
 
-3. Install the Expo CLI and npm [project dependencies](#project-dependencies)in the project's root folder:
+3. Install the Expo CLI and npm [project dependencies](#project-dependencies) in the project's root folder:
 ```
 $ npm i -g expo-cli
 $ npm install
@@ -49,7 +49,7 @@ $ npm install
 ```
 $ expo start
 ```
-Follow the instructions in the terminal to connect to Android or iOS or just scan the QR code.  
+Follow the instructions in the terminal to connect to Android or iOS or scan the QR code.  
 
 ### Project Dependencies
 ```
@@ -77,16 +77,11 @@ Follow the instructions in the terminal to connect to Android or iOS or just sca
 ```
 ### Create your own database with Firebase
 1. Sign in to [Google Firebase](https://firebase.google.com/) with Google and, if you don't have one already, create a new Firebase account. 
-
 2. Go to the console via the link in the top-right corner of the window.
 3. Click on Create Project (or Add project if you've already worked with Firebase). 
-
 4. In the form, name your project.  Leave the default settings, agree to the term and click on Create Project. 
-
 5. Create your database by clicking Develop from the menu on the left-hand side. Select Cloud Firestore and Create Database. 
-
 6. Start in test mode and then select a location for Cloud Firestore that is nearest to you.  Firestore will automatically configure and load the database page.
-
 7.  In the main panel, click on Start collection and add a new collection called "messages".  Insert some dummy data to get started. 
 8.  Click on the Settings icon at the top of the left-side menu, next to Project Overview.  Choose Project Settings.
 9.  Scroll down to SDK Setup and Configuration.  Be sure the npm option is chosen.  Copy your Firebase configuration from the code.  It should look something like this:
