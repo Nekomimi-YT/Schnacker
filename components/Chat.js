@@ -22,7 +22,7 @@ export default class Chat extends Component {
         name: '',
       },
       loggedInText: '',
-      isConnected: false,
+      isConnected: false
     }
 
     // Initialize Firebase
@@ -111,9 +111,9 @@ export default class Chat extends Component {
             messages: [], 
             user: {
               _id: user.uid,
-              name: name,
+              name: name
             },
-            loggedInText: `Welcome back ${name}!`,
+            loggedInText: `Welcome back ${name}!`
           });
     
           //console.log testing that anon auth was successful
@@ -179,7 +179,7 @@ export default class Chat extends Component {
       });
     });
     this.setState({
-      messages: messages,
+      messages: messages
     });
   };
 
@@ -190,7 +190,7 @@ export default class Chat extends Component {
         {...props}
         wrapperStyle={{
           right: {
-            backgroundColor: '#838383',
+            backgroundColor: '#838383'
           },
           left: {
             backgroundColor: '#FFFFFF'
@@ -223,15 +223,17 @@ export default class Chat extends Component {
     if (currentMessage.location) {
       return (
           <MapView
-            style={{width: 150,
+            style={{
+              width: 150,
               height: 100,
               borderRadius: 13,
-              margin: 3}}
+              margin: 3
+            }}
             region={{
               latitude: currentMessage.location.latitude,
               longitude: currentMessage.location.longitude,
               latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
+              longitudeDelta: 0.0421
             }}
           />
       );
@@ -254,21 +256,21 @@ export default class Chat extends Component {
           onSend={messages => this.onSend(messages)}
           user={{
             _id: this.state.user._id,
-            name: name,
+            name: name
         }}
         />
         { Platform.OS === 'android' 
           ? <KeyboardAvoidingView behavior="height" /> 
           : null }
       </View>
-    )
+    );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1
-  },
+  }
 });
 
 /*  RECORD of data set-up
