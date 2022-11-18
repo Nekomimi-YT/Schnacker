@@ -1,6 +1,6 @@
-//Main App page and navigation
+// Main App page and navigation
+
 import React, { Component } from 'react';
-//import { Button, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
