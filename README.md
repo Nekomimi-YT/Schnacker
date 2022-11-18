@@ -28,21 +28,19 @@ To build a chat app for mobile devices using React Native. The app will provide 
 * As a user with a visual impairment, I want to use a chat app that is compatible with a screen reader so that I can engage with a chat interface.
 
 ## Run this project
-The Schnacker Chat App was developed using Expo (https://docs.expo.dev/) and can be run on iOS or Android mobile devices or simulators like Android Studio (https://developer.android.com/studio/install).  
+The Schnacker Chat App was developed using [Expo](https://docs.expo.dev/) and can be run on iOS or Android mobile devices or simulators like [Android Studio](https://developer.android.com/studio/install). It utilizes [Google Firebase](https://firebase.google.com/) to store chat data. See more information about setting up your own [Firebase Firestore](#create-your-own-database-with-firebase) below. 
 
 1. Follow the documentation to install Expo on your device or a simulator on Windows, Mac or Linux. 
 
-2. Clone Schnacker from Github 
-Using the URL: 
+2. Clone Schnacker from Github using the URL or Github CLI:
 ```
 $ git clone https://github.com/Nekomimi-YT/Schnacker.git
 ```
-or Github CLI:
 ```
 $ gh repo clone Nekomimi-YT/Schnacker
 ```
 
-3. Install the Expo CLI and npm project dependencies in the project's root folder:
+3. Install the Expo CLI and npm [project dependencies](#project-dependencies)in the project's root folder:
 ```
 $ npm i -g expo-cli
 $ npm install
@@ -50,16 +48,11 @@ $ npm install
 
 4. Run the project:
 ```
-$ npx expo start
-```
-or
-```
 $ expo start
 ```
-
 Follow the instructions in the terminal to connect to Android or iOS or just scan the QR code.  
 
-## Project Dependencies
+### Project Dependencies
 ```
 "@react-native-async-storage/async-storage": "~1.17.3",
 "@react-native-community/masked-view": "^0.1.11",
@@ -83,3 +76,31 @@ Follow the instructions in the terminal to connect to Android or iOS or just sca
 "expo-permissions": "~13.2.0",
 "expo-image-picker": "~13.3.1"
 ```
+### Create your own database with Firebase
+
+1. Sign in to [Google Firebase](https://firebase.google.com/) with your Google account and (if you don't have on already) create a new Firebase account. 
+
+2. Go to console via the link in the top-right corner of the window.
+3. Click on Create Project (or Add project if you've already worked with Firebase). 
+
+4. In the form, name your project.  Leave the default settings, agree to the term and click on Create Project. 
+
+5. To create your database, click Develop from the menu on the left-hand side, select Cloud Firestore and then Create Database. 
+
+6. Start in test mode and then select a location for Cloud Firestore that is nearest to you.  Firestore will automatically configure and load the database page.
+
+7.  In the main panel, Click on Start collection and add a new collection called "messages".  Insert some dummy data to get started. 
+8.  Click on Settings icon in the left menu, top, next to project Overview.  Choose Project Settings.
+9.  Scroll down to SDK Setup and Configuration.  Be sure the npm option is chosen.  Copy your Firebase configuration from the code.  It should look something like this:
+```
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "ABcdefg1234-Zb2Q763433X9GXmGHStVKsLJdccv",
+  authDomain: "example-firestore-7d5wq.firebaseapp.com",
+  projectId: "example-firestore-7d5wq",
+  storageBucket: "example-firestore-7d5wt.appspot.com",
+  messagingSenderId: "123456780123",
+  appId: "1:123456780123:web:a12345d66fb1234ff0985e"
+};
+```
+10. Paste this code over lines 29-36 in Chat.js to connect your database. 
