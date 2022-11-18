@@ -36,21 +36,21 @@ The Schnacker Chat App was developed using [Expo](https://docs.expo.dev/) and ca
 
 2. Clone Schnacker from Github using the URL or Github CLI:
 ```
-$ git clone https://github.com/Nekomimi-YT/Schnacker.git
+git clone https://github.com/Nekomimi-YT/Schnacker.git
 ```
 ```
-$ gh repo clone Nekomimi-YT/Schnacker
+gh repo clone Nekomimi-YT/Schnacker
 ```
 
 3. Install the Expo CLI and npm [project dependencies](#project-dependencies) in the project's root folder:
 ```
-$ npm i -g expo-cli
-$ npm install
+npm i -g expo-cli
+npm install
 ```
 
 4. Run the project:
 ```
-$ expo start
+expo start
 ```
 Follow the instructions in the terminal to connect to Android or iOS or scan the QR code.  
 
