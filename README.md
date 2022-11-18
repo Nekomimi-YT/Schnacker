@@ -4,7 +4,12 @@
 To build a chat app for mobile devices using React Native. The app will provide users with a chat interface and options to share images and their location.
 
 ## Images:
-* Will upload when app is complete
+![Schnacker Start Screen](./img/Schnacker_start.jpg)
+![Basic Message Input](./img/Schnacker_basic.jpg)
+
+![Features Menu](./img/Schnacker_features.jpg)
+![Adding a photo from the media library](./img/Schnacker_chat_photo.jpg)
+![Adding user location](./img/Schnacker_photo_loc.jpg)
 
 ## Key Technologies: 
 * React, React-Native - Front End Framework
