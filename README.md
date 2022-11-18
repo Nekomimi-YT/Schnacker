@@ -78,19 +78,19 @@ Follow the instructions in the terminal to connect to Android or iOS or just sca
 ```
 ### Create your own database with Firebase
 
-1. Sign in to [Google Firebase](https://firebase.google.com/) with your Google account and (if you don't have on already) create a new Firebase account. 
+1. Sign in to [Google Firebase](https://firebase.google.com/) with Google and, if you don't have one already, create a new Firebase account. 
 
-2. Go to console via the link in the top-right corner of the window.
+2. Go to the console via the link in the top-right corner of the window.
 3. Click on Create Project (or Add project if you've already worked with Firebase). 
 
 4. In the form, name your project.  Leave the default settings, agree to the term and click on Create Project. 
 
-5. To create your database, click Develop from the menu on the left-hand side, select Cloud Firestore and then Create Database. 
+5. Create your database by clicking Develop from the menu on the left-hand side. Select Cloud Firestore and Create Database. 
 
 6. Start in test mode and then select a location for Cloud Firestore that is nearest to you.  Firestore will automatically configure and load the database page.
 
-7.  In the main panel, Click on Start collection and add a new collection called "messages".  Insert some dummy data to get started. 
-8.  Click on Settings icon in the left menu, top, next to project Overview.  Choose Project Settings.
+7.  In the main panel, click on Start collection and add a new collection called "messages".  Insert some dummy data to get started. 
+8.  Click on the Settings icon at the top of the left-side menu, next to Project Overview.  Choose Project Settings.
 9.  Scroll down to SDK Setup and Configuration.  Be sure the npm option is chosen.  Copy your Firebase configuration from the code.  It should look something like this:
 ```
 // Your web app's Firebase configuration
