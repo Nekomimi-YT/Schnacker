@@ -12,7 +12,7 @@ export default class Start extends Component {
     super(props),
     this.state = { 
       name: '',
-      bgColor: '',
+      bgColor: ''
     }
   }
   
@@ -101,15 +101,15 @@ export default class Start extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   image: {
-    flex: 1,
+    flex: 1
   },
   contentWrapper: {
     flex: 1,
     justifyContent: 'space-around',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   title: {
     fontSize: 45,
@@ -136,29 +136,28 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '300',
     //opacity: '50%', Cannot use this property on Android - Causes error
-    color: '#757083',
+    color: '#757083'
   },
   viewTwo: {
     width: '88%',
     marginTop: 8,
-    backgroundColor: 'white',
+    backgroundColor: 'white'
   },
   text: {
     fontSize: 16,
     fontWeight: '300',
-    color: '#757083',
-    //opacity: '100%', Cannot use this property on android - Causes error
+    color: '#757083'
   },
   viewThree: {
     flexDirection: 'row',
     width: '100%',
-    backgroundColor: 'white',
+    backgroundColor: 'white'
   },
   box: {
     height: 36,
     width: 36,
     margin: 8,
-    borderRadius: 18,
+    borderRadius: 18
   },
   bgDark: {
     backgroundColor: '#090C08'
