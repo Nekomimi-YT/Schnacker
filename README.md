@@ -12,12 +12,11 @@ To build a chat app for mobile devices using React Native. The app will provide 
 * Firebase Firestore - Cloud Storage and NoSQL Database
 
 ## Key Features: 
-* A page where users can enter their name and choose a background color for the chat screen before joining the chat.
-* A page displaying the conversation, as well as an input field and submit button. 
-* The chat must provide users with two additional communication features: sending images and location data. 
+* A landing page where users can enter their name and choose a background color for the chat screen before joining the chat.
+* A main chat page displaying messages, the input field and submit button. 
+* The chat provides users additional communication features: taking and sending images and sending location data. 
 * Data gets stored online and offline. 
-* Add an app shortcut to the home screen. 
-* Easily view data about upcoming events.
+* The app provides accessibility features so those with visual impairments can understand and use the app.
 
 ## User Stories and Scenario Tests
 * As a new user, I want to be able to easily enter a chat room so I can quickly start talking to my friends and family.
@@ -28,7 +27,7 @@ To build a chat app for mobile devices using React Native. The app will provide 
 * As a user with a visual impairment, I want to use a chat app that is compatible with a screen reader so that I can engage with a chat interface.
 
 ## Run this project
-The Schnacker Chat App was developed using [Expo](https://docs.expo.dev/) and can be run on iOS or Android mobile devices or simulators like [Android Studio](https://developer.android.com/studio/install). It utilizes [Google Firebase](https://firebase.google.com/) to store chat data. See more information about setting up your own [Firebase Firestore](#create-your-own-database-with-firebase) below. 
+The Schnacker Chat App was developed using [Expo](https://docs.expo.dev/) and can be run on iOS or Android mobile devices or simulators like [Android Studio](https://developer.android.com/studio/install). It utilizes [Google Firebase](https://firebase.google.com/) to store chat data. See more information here on [Firebase Firestore](#create-your-own-database-with-firebase) set-up. 
 
 1. Follow the documentation to install Expo on your device or a simulator on Windows, Mac or Linux. 
 
@@ -77,7 +76,6 @@ Follow the instructions in the terminal to connect to Android or iOS or just sca
 "expo-image-picker": "~13.3.1"
 ```
 ### Create your own database with Firebase
-
 1. Sign in to [Google Firebase](https://firebase.google.com/) with Google and, if you don't have one already, create a new Firebase account. 
 
 2. Go to the console via the link in the top-right corner of the window.
