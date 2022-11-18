@@ -17,7 +17,7 @@ Features menu, photo and location messaging:
 
 ## Key Technologies: 
 * React, React-Native - Front End Framework
-* Expo, Android Studio - Development
+* Expo, Android Studio, iOS 16 on iPhone8 - Development
 * Firebase Firestore - Cloud Storage and NoSQL Database
 
 ## Key Features: 
