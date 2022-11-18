@@ -25,6 +25,7 @@ As a user, I want to:
 * Send images to my friends to show them what I’m currently doing.
 * Share my location with my friends to show them where I am. 
 * Read my messages offline so I can reread conversations at any time. 
+
 As a user with a visual impairment, I want to:
 * Use a chat app that is compatible with a screen reader so that I can engage with a chat interface.
 
