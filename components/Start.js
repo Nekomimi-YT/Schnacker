@@ -1,6 +1,6 @@
-/*Start page displays an input box that saves the input value to the state
+/* Start page displays an input box that saves the input value to the state
 When the button is clicked, this state is passed Chat.js as a prop 
-for the navigation display*/
+for the navigation display */
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, ImageBackground, TouchableOpacity} from 'react-native';
@@ -47,7 +47,7 @@ export default class Start extends Component {
                     accessibilityHint='Choose almost black as the chat screen background color.'
                     accessibilityRole='button'
                     onPress={() => this.setState({
-                      bgColor: '#090C08',
+                      bgColor: '#090C08'
                       }) 
                     }
                   >
@@ -59,7 +59,7 @@ export default class Start extends Component {
                     accessibilityHint='Choose purple brown as the chat screen background color.'
                     accessibilityRole='button'
                     onPress={() => this.setState({
-                      bgColor: '#474056',
+                      bgColor: '#474056'
                     })
                   }>
                   </TouchableOpacity>
@@ -70,7 +70,7 @@ export default class Start extends Component {
                     accessibilityHint='Choose silver blue as the chat screen background color.'
                     accessibilityRole='button'
                     onPress={() => this.setState({
-                      bgColor: '#8A95A5',
+                      bgColor: '#8A95A5'
                     })
                   }>
                   </TouchableOpacity>
@@ -81,7 +81,7 @@ export default class Start extends Component {
                     accessibilityHint='Choose pale green as the chat screen background color.'
                     accessibilityRole='button'
                     onPress={() => this.setState({
-                      bgColor: '#B9C6AE',
+                      bgColor: '#B9C6AE'
                     })
                   }>
                   </TouchableOpacity>
