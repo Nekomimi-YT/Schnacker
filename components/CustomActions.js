@@ -145,25 +145,25 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28,
     marginLeft: 10,
-    marginBottom: 10,
+    marginBottom: 10
   },
   wrapper: {
     borderRadius: 20,
     borderColor: '#8A95A5',
     borderWidth: 2,
-    flex: 1,
+    flex: 1
   },
   iconText: {
     color: '#090C08',
     fontWeight: 'bold',
     fontSize: 16,
     backgroundColor: 'transparent',
-    textAlign: 'center',
-  },
+    textAlign: 'center'
+  }
  });
 
  CustomActions.contextTypes = {
-  actionSheet: PropTypes.func,
+  actionSheet: PropTypes.func
  };
 
  CustomActions = connectActionSheet(CustomActions);
