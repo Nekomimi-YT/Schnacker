@@ -124,7 +124,7 @@ export default class Chat extends Component {
     
           // listen for message collection changes for current user
           this.unsubscribeChatMessagesUser = this.referenceChatMessagesUser
-            .orderBy('createdAt', desc)
+            //.orderBy('createdAt', desc)
             .onSnapshot(this.onCollectionUpdate);
         });
       }
